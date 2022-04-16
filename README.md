@@ -1,15 +1,15 @@
-# lwbase
+# insomnia
 
 ## Introduction
 
-The lwbase is laravel8 + wordpess(newest) web application.
+The insomnia is laravel8 + wordpess(newest) web application.
 
-Web: http://lwbase.roughlang.com/
-Github: https://github.com/roughlang/lwbase
+Web: http://insomnia.roughlang.com/  
+Github: https://github.com/roughlang/insomnia
 
 Git clone
 ```
-$ git clone https://github.com/roughlang/lwbase.git lwbase
+$ git clone git clone https://github.com/roughlang/insomnia.git insomnia
 ```
 
 - Laravel8
@@ -18,11 +18,11 @@ $ git clone https://github.com/roughlang/lwbase.git lwbase
     - Bootstrap5
     - [ikonate](https://ikonate.com/)
 
-## Docker for lwbase
+## Docker for insomnia
 
 Change to the app directory.
 ```
-$ cd lwbase
+$ cd insomnia
 $ cd app
 ```
 
@@ -66,7 +66,7 @@ access: http://localhost:8000
 
 access: http://localhost:8000/pma/index.php  
 
-and create database `lwbase_app`
+and create database `insomnia_app`
 ```
 user: root  
 password: (empty)
@@ -78,7 +78,7 @@ $ docker-compose ps
 $ docker exec -it app_mysql_1 /bin/bash
 bash-4.4# mysql -u root
 mysql> show databases;
-mysql> create database lwbase_app character set utf8mb4;
+mysql> create database insomnia_app character set utf8mb4;
 ```
 
 exec by artisan to exec.
@@ -92,7 +92,7 @@ success.
 We usually do the initial setup in the Wordpress GUI.
 Information for database to connect
 ```
-databse: lwbase_app
+databse: insomnia_app
 user: root
 password: (empty)
 host: mysql
@@ -109,11 +109,11 @@ http://localhost:8000/ac/wp-admin
 You can also install it manually using subdata (unofficial). You manually create wp-config.php and restore the mysql database data.
 
 ```
-$ docker cp ../subdata/lwbase_app.sql app_mysql_1:/tmp/lwbase_app.sql
+$ docker cp ../subdata/insomnia_app.sql app_mysql_1:/tmp/insomnia_app.sql
 $ docker exec -it app_mysql_1 /bin/bash
 bash-4.4# ls /tmp
-lwbase_app.sql
-mysql -u root lwbase_app < /tmp/lwbase_app.sql
+insomnia_app.sql
+mysql -u root insomnia_app < /tmp/insomnia_app.sql
 ```
 
 ### Wordpress plugins

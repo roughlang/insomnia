@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\App;
+
 
 
 /**
@@ -30,7 +32,6 @@ class CommonSecurity
   public static function PassBySuperUsers($user) {
 
     foreach(self::GetSuperUserEmailAddress() as $email) {
-      // var_dump($email);
       if ($user->email == $email) {
         return true;
       } else {
@@ -46,8 +47,13 @@ class CommonSecurity
    */
   public static function PassByIPAddress() {
 
+    /* local env */
+    $environment = App::environment();
+    if ($environment == "local") {
+      return true;
+    }
+    /* else env */
     $current_ip = \Request::ip();
-
     foreach(self::GetAllowGIP() as $ip) {
       if ($current_ip == $ip) {
         return true;

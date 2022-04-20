@@ -41,3 +41,7 @@ _app
 twitter-2022-04-09
 twitter-2022-04-09.zip
 app/public/twitter/*
+
+# subdata
+subdata/*
+~$

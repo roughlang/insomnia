@@ -13,10 +13,15 @@ class CreateTweetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tweets', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+      Schema::create('tweets', function (Blueprint $table) {
+        $table->id();
+        $table->string('unique_id', 128);
+        $table->string('datetime', 16);
+        $table->string('tweet', 256);
+        $table->mediumInteger('likes');
+        $table->mediumInteger('retweets');
+        $table->timestamps();
+      });
     }
 
     /**
@@ -26,6 +31,6 @@ class CreateTweetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tweets');
+      Schema::dropIfExists('tweets');
     }
 }

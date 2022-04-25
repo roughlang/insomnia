@@ -75,7 +75,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/7f112c5bc568/admin', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('adminroot');
 // Route::get('/acd79785b292/{slug}', [App\Http\Controllers\Admin\AdminController::class, 'uploader'])->name('uploader');
 Route::get('/acd79785b292/uploader', [App\Http\Controllers\Admin\UploadController::class, 'uploader'])->name('uploader');
-Route::post('/save', [App\Http\Controllers\UploadController::class, 'save'])->name('upload_save');
+Route::post('/978ccf1b305a12920150275cb6ad5a1746932720/save', [App\Http\Controllers\Admin\UploadController::class, 'save'])->name('upload_save');
 
 
 

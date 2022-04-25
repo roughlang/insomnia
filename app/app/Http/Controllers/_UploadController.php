@@ -1,17 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Auth;
 use App\Library\CommonSecurity;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Http\File;
-use App\Image;
-use Storage;
+use Illuminate\Support\Facades\Auth;
 
 class UploadController extends Controller
 {
@@ -22,7 +16,7 @@ class UploadController extends Controller
    *
    * @return void
    */
-  public function __construct(Request $request)
+  public function __construct()
   {
     $this->middleware('auth');
     
@@ -39,8 +33,8 @@ class UploadController extends Controller
       }
       return $next($request);
     });
+    
   }
-
   /**
    * Show the application dashboard.
    *
@@ -48,35 +42,37 @@ class UploadController extends Controller
    */
   public function uploader()
   {
-    // var_dump($this->user->email);
-    $this->current_ip = \Request::ip();
-    Log::channel('admin_access')->info('admin/uploader: '.$this->current_ip);
+    // var_dump(Auth::user()->email);
+    // var_dump(CommonSecurity::get_allow_gip());
 
-    return view('admin/uploader');
+    // $c = new CommonSecurity();
+    // echo $c->hello2();
+    var_dump($this->user->email);
+    return view('uploader/uploader');
   }
+
   /**
    * upload request
    */
   public function save(Request $request)
   {
-    $this->current_ip = \Request::ip();
-    Log::channel('admin_access')->info('admin/save: '.$this->current_ip." ".$request->file('files'));
+    // $this->current_ip = \Request::ip();
+    // Log::channel('admin_access')->info('admin/save: '.$this->current_ip);
 
-    // abort(422);
     $validated = $request->validate([
-      'files' => ['nullable','file','image','mimes:jpg,jpeg,png,bmp,gif,svg,webp','dimensions:min_width=50,min_height=50,max_width=5000,max_height=5000'],
-      // 'files' => ['image','mimes:jpg'],
+      'file' => ['nullable','file','image','mimes:jpg,jpeg,png,bmp,gif,svg,webp','dimensions:min_width=50,min_height=50,max_width=5000,max_height=5000'],
     ],[
-      'files.image' => 'jpg,jpeg,png,bmp,gif,svg,webp以外の拡張子は利用できません。',
-      'files.dimensions' => '縦横5000px以下のサイズでアップロードしてください。',
-    ]);
-
+      'file.image' => 'jpg,jpeg,png,bmp,gif,svg,webp以外の拡張子は利用できません。',
+      'file.dimensions' => '縦横5000px以下のサイズでアップロードしてください。',
+    ]); 
     /**
      * get files
      */
+    // Log::debug("foobar");
+    // Log::debug($request);
     $file = $request->file('files');
     $originalName = $file->getClientOriginalName();
-    
+    Log::debug($originalName);
     // dd($request);
     // dd($request);
     // $file = $request->file('a');
@@ -88,7 +84,7 @@ class UploadController extends Controller
     $dir = 'public';
     $file->storeAs($dir, $originalName, ['disk' => 'local']);
     
-    Log::channel('admin_access')->info('admin/save: '.$this->current_ip.' uploaded success.');
     return $originalName;
   }
+
 }

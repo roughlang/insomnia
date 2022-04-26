@@ -971,9 +971,11 @@ table {
 	}
 }
 
+/* トップへ戻るボタン */
 .topback_button {
 	position: relative;
 	.topback_img {
+		cursor:pointer;
 		// background: #ff0;
 		position: fixed;
 		bottom: 30px;

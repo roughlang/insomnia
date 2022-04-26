@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('title', 'Uploader')
 
@@ -71,7 +71,7 @@
 
                   let form = new FormData()
                   form.append('files', file)
-                  axios.post('/save', form).then(response => {
+                  axios.post('/978ccf1b305a12920150275cb6ad5a1746932720/save', form).then(response => {
                     // setTimeout( function() {
                     //   console.log(this.upload_files[i].name);
                     // }, 10000 );
@@ -104,12 +104,16 @@
                     console.log(this.message);
                   }).catch(error => {
                     // this.message = [];
-                    // console.log(error.response.status);
+                    console.log(error.response.data.errors.files[0]);
+                    console.log(error.response.status);
+                    // errors = error.response.data.errors;
                     // console.log(error.response.statusText);
                     // console.log('error:'+error);
                     if (error.response.status == '422') {
                       // this.message = ['送信エラーが発生しました。最初からやり直してください。'];
-                      this.message.push('一部送信エラーが発生しました。');
+                      let errors = error.response.data.errors;
+                      // console.log( error.response.data.errors);
+                      this.message.push(error.response.data.errors.files[0]);
                     }
                     
                   })

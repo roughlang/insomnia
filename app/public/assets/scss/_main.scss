@@ -948,7 +948,6 @@ body {
       }
     }
   }
-
 }
 
 .hr {
@@ -971,6 +970,20 @@ table {
 		}
 	}
 }
+
+.topback_button {
+	position: relative;
+	.topback_img {
+		// background: #ff0;
+		position: fixed;
+		bottom: 30px;
+		right: 30px;
+	}
+}
+footer {
+	// background: #ff0;
+}
+
 .mt10 { margin-top: 10px; }
 .mt20 { margin-top: 20px; }
 .mt30 { margin-top: 30px; }

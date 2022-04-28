@@ -46,10 +46,17 @@ Route::get('/vue', function () { return view('vue/index'); });
 Route::get('/vue/ajax_get', function () { return view('vue/ajax_get'); });
 Route::get('/vue/component', function () { return view('vue/component'); });
 
-Auth::routes();
 
+/**
+ * Login
+ */
+Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+/**
+ * Register
+ */
+Route::get('/registed', function () { return view('register/registed'); });
 
 // var_dump($request->ip());s
 // var_dump($_SERVER['REMOTE_ADDR']);

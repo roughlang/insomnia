@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -36,5 +37,19 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    /**
+     * ユーザーを探す条件を指定する
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return Response
+     */
+    protected function credentials(Request $request)
+    {
+        return array_merge( 
+            $request->only($this->username(), 'password'), // 標準の条件
+            [ 'status' => 50 ] // 追加条件
+        );
     }
 }

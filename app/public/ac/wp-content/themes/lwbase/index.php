@@ -28,19 +28,19 @@ include(__DIR__."/include/common.php");
             <a href="/ac/menu_of_philosophy/">
               <div class="menu-index menu-index-1" id="menu-index-1">
                 <span class="text">Philosophy</span>
-                <img src="/assets/img/top/bl_009.jpg" class="menu-index-img menu-index-img-1">
+                <img src="/assets/img/top/bl_009.png" class="menu-index-img menu-index-img-1">
               </div>
             </a>
             <a href="/ac/archives">
               <div class="menu-index menu-index-2" id="menu-index-2">
                 <span class="text">Archive</span>
-                <img src="/assets/img/top/bl_002.jpg" class="menu-index-img menu-index-img-2">
+                <img src="/assets/img/top/bl_002.png" class="menu-index-img menu-index-img-2">
               </div>
             </a>
             <a href="/ac/category/technology-system/">
               <div class="menu-index menu-index-3" id="menu-index-3">
                 <span class="text">System</span>
-                <img src="/assets/img/top/bl_003.jpg" class="menu-index-img menu-index-img-3">
+                <img src="/assets/img/top/bl_003.png" class="menu-index-img menu-index-img-3">
               </div>
             </a>
           </div>

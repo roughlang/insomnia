@@ -11,8 +11,19 @@ use Illuminate\Support\Facades\Validator;
 use App\Library\CommonSystem;
 use Carbon\Carbon;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TmpRegistMail;
+
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+
 class RegisterController extends Controller
 {
+  // use RedirectsUsers;
+  
   /*
   |--------------------------------------------------------------------------
   | Register Controller
@@ -76,10 +87,16 @@ class RegisterController extends Controller
 
     /* トークン */
     $email_token = $this->issue_email_token($email_token_limit_at);
+    $access_url = config('app.url')."/registed/pdt/".$email_token;
 
     /* メール送信 */
-
-
+    $mail_message = [
+      "subject" => "insomniaの仮登録が完了しました",
+      "user_name" => $data['name'],
+      "access_url" => $access_url,
+    ];
+    
+    Mail::to($data['email'])->send( new TmpRegistMail($mail_message) );
 
     /* DB登録 */
     return User::create([
@@ -106,4 +123,46 @@ class RegisterController extends Controller
     $token = hash('sha512',$datetime);
     return $token;
   }
+
+  /**
+   * app/vendor/laravel/ui/auth-backend/RegistersUsers.phpのコピー
+   * traitを継承してここで上書きしています。
+   */
+  public function register(Request $request)
+  {
+    $this->validator($request->all())->validate();
+
+    event(new Registered($user = $this->create($request->all())));
+
+    /* 登録後の自動ログインを無効にする */
+    // $this->guard()->login($user);
+
+    if ($response = $this->registered($request, $user)) {
+        return $response;
+    }
+
+    return $request->wantsJson()
+      ? new JsonResponse([], 201)
+      : redirect($this->redirectPath());
+  }
+
+  /**
+   * 本登録
+   */
+  public function registed_pdt($id)
+  {
+    $user = User::where('email_token', '=', $id)->first();
+    if($user) {
+      $user->status = "50";
+      $user->email_token = "";
+      $user->save();
+      return redirect('/login');
+    } else {
+      return redirect('/');
+    }
+  }
 }
+
+
+
+

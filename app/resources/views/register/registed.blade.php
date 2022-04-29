@@ -13,7 +13,14 @@
             会員登録が完了しました。登録のメールアドレスに本登録URLが記載されています。<br>
             30分以内に本登録の手続きを完了させてください。
           </p>
-          <a href="/" class="card-link">Top page</a>
+          <a  class="nav-link active" href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();">
+            Top page
+          </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+              @csrf
+            </form>
         </div>
       </div>
     </div>

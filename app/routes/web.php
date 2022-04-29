@@ -57,23 +57,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
  * Register
  */
 Route::get('/registed', function () { return view('register/registed'); });
-
-// var_dump($request->ip());s
-// var_dump($_SERVER['REMOTE_ADDR']);
-// var_dump(Request::ip());
-// die();
-
-
-// var_dump( env('APP_ALLOW_GIP'));
-// if (
-//   env('APP_ENV') == 'local' ||
-//   Request::ip() == '150.249.203.12' && env('APP_ENV') == 'prod' ||
-//   // 126.235.23.188
-//   Request::ip() == '126.235.23.188' && env('APP_ENV') == 'prod'
-// ) {
-
-// }
-
+Route::get('/registed/pdt/{id}', [App\Http\Controllers\Auth\RegisterController::class, 'registed_pdt']);
 
 /**
  * admin

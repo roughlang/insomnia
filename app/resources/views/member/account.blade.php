@@ -4,8 +4,7 @@
 <div class="container member">
   <div class="row mt100">
     <div class="col-sm-9">
-      <h3>Home</h3>
-      <h4>{{ $user['name'] }}</h4>
+    Account
     </div>
     <div class="col-sm-3">
       @include('include/member-side-menu')

@@ -51,13 +51,20 @@ Route::get('/vue/component', function () { return view('vue/component'); });
  * Login
  */
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 /**
  * Register
  */
 Route::get('/registed', function () { return view('register/registed'); });
 Route::get('/registed/pdt/{id}', [App\Http\Controllers\Auth\RegisterController::class, 'registed_pdt']);
+
+/**
+ * Home
+ */
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/member/account', [App\Http\Controllers\Member\AccountController::class, 'index'])->name('member_account');
+
+
 
 /**
  * admin

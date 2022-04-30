@@ -19,6 +19,8 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Log;
+
 
 class RegisterController extends Controller
 {
@@ -46,7 +48,7 @@ class RegisterController extends Controller
   protected $redirectTo = "/registed";
 
   /* limit time */
-  protected $limit_time = 30; // minuts
+  protected $limit_time = 1440; // minuts 24hour
 
   /**
    * Create a new controller instance.
@@ -151,16 +153,49 @@ class RegisterController extends Controller
    */
   public function registed_pdt($id)
   {
+    /**
+     * validation
+     */
+    $count = strlen($id);
+    if ($count != 128 && !preg_match("/[0-9][a-z]/",$id)) {
+      return redirect('/');
+    }
+
+    /* status check */
     $user = User::where('email_token', '=', $id)->first();
-    if($user) {
-      $user->status = "50";
-      $user->email_token = "";
-      $user->save();
-      return redirect('/login');
+
+    /* user情報はあるか */
+    if ($user) {
+      $now = Carbon::now();
+      $email_token_limit_at = new Carbon($user->email_token_limit_at);
+  
+      /* 現在時間はLimit以内か */
+      if($email_token_limit_at->gt($now)) {
+        if($user->status == 10) {
+          $user->status = "50";
+          $user->email_token = "";
+          $user->save();
+          return redirect('/login');
+        } else {
+          return redirect('/');
+        }
+      } else {
+        /**
+         * Limitを過ぎている場合は退会にする
+         * Emailアドレスはユニークなため、バックアップして伏せ字にする
+         */
+        Log::channel('user_manage')->info('registed/pdt/{id}: '.$user->id.' '.$user->name.' '.$user->email.' registration deadline has already passed.');
+        $user->status = "100";
+        $user->email = "";
+        $user->email_token = "";
+        $user->save();
+        return redirect('/');
+      }
     } else {
       return redirect('/');
     }
   }
+
 }
 
 

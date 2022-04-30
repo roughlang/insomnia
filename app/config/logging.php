@@ -55,6 +55,13 @@ return [
             // 'permission' => 0666,
         ],
 
+        'user_manage' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/user_manage.log'),
+            'level' => 'info',
+            // 'permission' => 0666,
+        ],
+
         'stack' => [
             'driver' => 'stack',
             'channels' => ['single'],

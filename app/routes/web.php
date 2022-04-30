@@ -46,26 +46,24 @@ Route::get('/vue', function () { return view('vue/index'); });
 Route::get('/vue/ajax_get', function () { return view('vue/ajax_get'); });
 Route::get('/vue/component', function () { return view('vue/component'); });
 
+
+/**
+ * Login
+ */
 Auth::routes();
 
+/**
+ * Register
+ */
+Route::get('/registed', function () { return view('register/registed'); });
+Route::get('/registed/pdt/{id}', [App\Http\Controllers\Auth\RegisterController::class, 'registed_pdt']);
+
+/**
+ * Home
+ */
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/member/account', [App\Http\Controllers\Member\AccountController::class, 'index'])->name('member_account');
 
-
-// var_dump($request->ip());s
-// var_dump($_SERVER['REMOTE_ADDR']);
-// var_dump(Request::ip());
-// die();
-
-
-// var_dump( env('APP_ALLOW_GIP'));
-// if (
-//   env('APP_ENV') == 'local' ||
-//   Request::ip() == '150.249.203.12' && env('APP_ENV') == 'prod' ||
-//   // 126.235.23.188
-//   Request::ip() == '126.235.23.188' && env('APP_ENV') == 'prod'
-// ) {
-
-// }
 
 
 /**

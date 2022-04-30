@@ -249,6 +249,7 @@ return [
         // common
         'CloudinaryUpload' => app\Library\CloudinaryUpload::class,
         'CommonSecurity' => app\Library\CommonSecurity::class,
+        'CommonSystem' => app\Library\CommonSystem::class,
     ],
 
 ];

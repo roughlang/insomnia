@@ -43,7 +43,7 @@ else
     /usr/local/php/8.1/bin/php artisan route:clear;
     /usr/local/php/8.1/bin/php artisan config:clear;
     # schedule(cron)
-    /usr/local/php/7.4/bin/php artisan schedule:run;
+    /usr/local/php/8.1/bin/php artisan schedule:run;
 fi
 
 # /usr/local/php/7.4/bin/php composer.phar update

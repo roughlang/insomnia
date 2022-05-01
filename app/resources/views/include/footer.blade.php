@@ -27,6 +27,32 @@ $(function(){
   </div>
 </div>
 <footer class="footer hr">
+  <div class="container footer-menu">
+    <div class="row mt50">
+      <div class="col-md-4">
+        <ul>
+          <li><a href="/contact">お問い合わせ</a></li>
+          <li><a href="#">利用規約</a></li>
+          <li><a href="#">プライバシーポリシー</a></li>
+          <li><a href="#">特定商取引法に基づく表記</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul>
+          <li><a href="#">当サイトについて</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul>
+          <li><a href="#">商品一覧</a></li>
+          <li><a href="#">Document Top</a></li>
+          <li><a href="#">Archives</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 	<div class="copy-right text-align-center mt20 mb20">
 		<p class="text-center">© 2021 Roughlang, INC. All Rights Reserved</p>
 	</div>

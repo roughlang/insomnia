@@ -1000,6 +1000,16 @@ table {
 }
 footer {
 	// background: #ff0;
+  .footer-menu {
+    ul {
+      li {
+        list-style: none;
+        a:link, a:visited {
+          color: #333;
+        }
+      }
+    }
+  }
 }
 
 .mt10 { margin-top: 10px; }

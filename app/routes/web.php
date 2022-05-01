@@ -32,7 +32,12 @@ if (env('APP_ENV') == 'local' || env('APP_ENV') == 'develop') {
   Route::get('/phpinfo', function () { return view('phpinfo'); });
 }
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+/**
+ * contact
+ */
+Route::get('/contact', [App\Http\Controllers\Contact\ContactController::class, 'form'])->name('contact');
+Route::post('/contact/confirm', [App\Http\Controllers\Contact\ContactController::class, 'confirm']);
+Route::post('/contact/send', [App\Http\Controllers\Contact\ContactController::class, 'send']);
 
 /**
  * test
@@ -51,6 +56,7 @@ Route::get('/vue/component', function () { return view('vue/component'); });
  * Login
  */
 Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 /**
  * Register

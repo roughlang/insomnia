@@ -81,6 +81,12 @@ class CommonSecurity
     return self::$superusers;
   }
 
+  public static function Sanitize($input) {
+    $output = htmlspecialchars($input, ENT_QUOTES);
+    $output = preg_replace("/\\\\/","",$output);
+    return $output;
+  }
+
   public static function hello() {
     $name = $app = Config::get('app.name');
     return $name."hoge";

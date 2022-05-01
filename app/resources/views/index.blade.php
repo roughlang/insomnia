@@ -6,24 +6,6 @@
 <div id="big-banner" class="big-banner p-3 p-sm-5 mb-4 bg-img">
 	<div id="container" class="container">
 		<h1 class="display-4">{{ env('APP_NAME') }}</h1>
-		<!-- <p class="lead">Als Gregor Samsa eines Morgens aus unruhigen Träumen erwachte, fand er sich in seinem Bett zu einem ungeheuren Ungeziefer verwandelt. Er lag auf sinem panzerartig harten Rücken und sah, wenn er den Kopf eine wenig hob, seinen gewölbten, braunen, von bogenförmigen Versteifungen geteilten Bauch, auf dessen Höhe sich die Bettdecke, zum gänzlichen Niedergleiten bereit, kaum noch erhalten konnte. Seine vielen, im Vergleich zu seinem sonstigen Umfang kläglich dünnnen Beine flimmerten ihm hilflos vor den Augen.</p> -->
-	
-    <!-- <div class="big-menu">
-      <ul class="big-menu-list">
-        <li>
-          <a href="http://">
-            <img src="/assets/img/top/bl_009.jpg" alt="" class="big-menu-image">
-            <h3>Philosophy</h3>
-          </a>
-        </li>
-        <li>
-          <a href="http://">2</a>
-        </li>
-        <li>
-          <a href="http://">3</a>
-        </li>
-      </ul>
-    </div> -->
   </div>
 </div>
 @endsection
@@ -126,42 +108,6 @@
     </div>
   </div>
 </div>
-<!--
-    <div class="col-sm-6">
-      <h2>Blog update</h2>
-      <div id="app">@{{ message }}</div>
-      
-      <script>
-        var app = new Vue({
-          el: '#app',
-          data: {
-            message: 'Hello Vue!'
-          }
-        })
-      </script>
-
-      <div id="list">
-        <ul v-for="(row,index) in tests" :key="row.title">
-            <li>@{{row.title}}(@{{index}})- @{{row.content}}　@{{row.content}}</li>
-            <ul v-for="(image,index) in row.images">
-              <li>@{{image}}</li>
-            </ul>
-        </ul>
-      </div>
-      <script>
-          var list = new Vue({
-          el: '#list',
-          data: {
-            tests: [
-              {title:'foo',content:'aaaaa',images:['jpg1-1','jpg1-2','jpg1-3']},
-              {title:'bar',content:'bbbbb',images:['png1-1','png1-2','png1-3']},
-              {title:'baz',content:'ccccc',images:['gif1-1','gif1-2','gif1-3']},
-            ]
-          }
-        })
-      </script>
-    </div>
-      -->
 @endsection
 
 

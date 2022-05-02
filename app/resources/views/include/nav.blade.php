@@ -8,59 +8,70 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarScroll">
-				<ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-					<!-- <li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="/">Home</a>
-					</li> -->
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Documents
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Product
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+            <li><a class="dropdown-item" href="/product">Product top</a></li>
+            <li><a class="dropdown-item" href="/product/archives">Archives</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/product/gallery">Gallery</a></li>
+          </ul>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li> -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Documents
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+            <li><a class="dropdown-item" href="/ac">Documents top</a></li>
+            <li><a class="dropdown-item" href="/ac/category">Categories</a></li>
+            <li><a class="dropdown-item" href="/ac/archives">Archives</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/ac/gallery">Gallery</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a  class="nav-link active" href="/ac/about">About</a></li>
+        @guest
+          @if (Route::has('login'))
+            @auth
+            <li class="nav-item"><a class="nav-link active" href="{{ url('/home') }}">Home</a></li>
+            @else
+            <li class="nav-item"><a class="nav-link active" href="{{ route('login') }}">Log in</a></li>
+              @if (Route::has('register'))
+              <li class="nav-item"><a class="nav-link active" href="{{ route('register') }}">Register</a></li>
+              @endif
+            @endauth
+          @endif
+        @else
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Menu</a>
+            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+              <li><a class="dropdown-item" href="/vue">vue.js</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a  class="nav-link active" href="{{ route('logout') }}"
+              onclick="event.preventDefault();
+              document.getElementById('logout-form').submit();">
+              {{ __('Logout') }}
             </a>
-						<ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-							<li><a class="dropdown-item" href="/ac">Documents top</a></li>
-							<li><a class="dropdown-item" href="/ac/category">Categories</a></li>
-							<li><a class="dropdown-item" href="/ac/archives">Archives</a></li>
-							<li><hr class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="/ac/gallery">Gallery</a></li>
-						</ul>
-					</li>
-          <li class="nav-item"><a  class="nav-link active" href="/ac/about">About</a></li>
-          @guest
-            @if (Route::has('login'))
-              @auth
-              <li class="nav-item"><a class="nav-link active" href="{{ url('/home') }}">Home</a></li>
-              @else
-              <li class="nav-item"><a class="nav-link active" href="{{ route('login') }}">Log in</a></li>
-                @if (Route::has('register'))
-                <li class="nav-item"><a class="nav-link active" href="{{ route('register') }}">Register</a></li>
-                @endif
-              @endauth
-            @endif
-          @else
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Menu</a>
-              <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                <li><a class="dropdown-item" href="/vue">vue.js</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/home">Home</a>
-            </li>
-            <li class="nav-item">
-              <a  class="nav-link active" href="{{ route('logout') }}"
-                onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
-              </a>
-            </li>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
-            </form>
-          @endguest
-				</ul>
+          </li>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+              @csrf
+          </form>
+        @endguest
+      </ul>
 				<form class="d-flex">
 					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
 					<button class="btn" type="submit">

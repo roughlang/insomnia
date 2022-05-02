@@ -6,9 +6,15 @@
 <div class="container lw-contents-block admin mt100">
   <div class="row mb100">
     <div class="col-sm-3">
+      <h4>Admin</h4>
       <ul class="admin-menu">
         <li><a href="{{ route('adminroot', ['slug' => 'admin']) }}">Admin top</a></li>
+        <li><a href="#">Admin access log</a></li>
         <li><a href="{{ route('uploader', ['slug' => 'storage']) }}">Image uploader</a></li>
+      </ul>
+      <h4>Product</h4>
+      <ul class="admin-menu">
+        <li><a href="#">Product list</a></li>
       </ul>
     </div>
     <div class="col-sm-9">

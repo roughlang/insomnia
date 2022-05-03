@@ -28,8 +28,11 @@ Route::get('/blog/gallery', function () { return view('blog/gallery'); });
 
 
 /* utility */
-if (env('APP_ENV') == 'local' || env('APP_ENV') == 'develop') {
+if (env('APP_ENV') == 'local' || env('APP_ENV') == 'develop' || env('APP_ENV') == 'stging') {
+  /* phpmyadmin */
   Route::get('/phpinfo', function () { return view('phpinfo'); });
+  /* error */
+  Route::get('/errors/{code}', [App\Http\Controllers\Utirity\ErrorsController::class, 'errors']);
 }
 
 /**

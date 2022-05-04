@@ -36,6 +36,12 @@ if (env('APP_ENV') == 'local' || env('APP_ENV') == 'develop' || env('APP_ENV') =
 }
 
 /**
+ * tools
+ */
+Route::get('/tools/serializer', [App\Http\Controllers\Tools\SerializerController::class, 'serializer'])->name('serializer');
+Route::post('/tools/serialized', [App\Http\Controllers\Tools\SerializerController::class, 'serialized'])->name('serialized');
+
+/**
  * contact
  */
 Route::get('/contact', [App\Http\Controllers\Contact\ContactController::class, 'form'])->name('contact');

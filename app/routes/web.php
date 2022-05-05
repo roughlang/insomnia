@@ -90,5 +90,19 @@ Route::get('/7f112c5bc568/admin', [App\Http\Controllers\Admin\AdminController::c
 Route::get('/acd79785b292/uploader', [App\Http\Controllers\Admin\UploadController::class, 'uploader'])->name('uploader');
 Route::post('/978ccf1b305a12920150275cb6ad5a1746932720/save', [App\Http\Controllers\Admin\UploadController::class, 'save'])->name('upload_save');
 
+/**
+ * product
+ * 2022-05-04 - 
+ * 
+ */
 
+// members login
+Route::get('/product/home', [App\Http\Controllers\Product\HomeController::class, 'home'])->name('product_home');
+
+/**
+ * usage
+ */
+Route::get('/usage', function () { return view('usage/index'); });
+// Route::get('/exception', function () { return view('exception'); });
+Route::get('/exception', [App\Http\Controllers\ExceptionController::class, 'index'])->name('exception_index');
 

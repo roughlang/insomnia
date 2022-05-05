@@ -1011,6 +1011,64 @@ body {
       }
     }
   }
+  /* normal page for lalaravel blade (n-page) */
+  .n-page-block {
+    .breadcrumb {
+      ul {
+        margin-left: -28px;
+        li {
+          font-size: 13px;
+          display: inline-block;
+        }
+        li.parent:after {
+          content: " >";
+        }
+      }
+    }
+    .page-content {
+      // 
+      font-size: 15px;
+      line-height: 26px;
+      p {
+        font-size: 15px;
+      }
+      p.end {
+        margin-bottom: 60px;
+      }
+      h3 {
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      ul {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        li {
+          list-style: circle;
+        }
+        ol {
+          list-style-type: decimal !important;
+        }
+      }
+    }
+    .menu {
+      li {
+        list-style: none;
+        h3 {
+          font-size: 18px;
+        }
+        ul {
+          margin-bottom: 20px;
+          li {
+            font-size: 14px;
+            line-height: 23px;
+          }
+        }
+      }
+      li.widget_tag_cloud {
+        margin-bottom: 30px;
+      }
+    }
+  }
 }
 
 .hr {

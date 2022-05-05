@@ -39,7 +39,8 @@ $(function(){
       </div>
       <div class="col-md-4">
         <ul>
-          <li><a href="#">当サイトについて</a></li>
+          <li><a href="/about">当サイトについて</a></li>
+          <li><a href="/usage">ご利用方法</a></li>
           <li><a href="#">Twitter</a></li>
           <li><a href="#">Instagram</a></li>
         </ul>

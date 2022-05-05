@@ -9,6 +9,13 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarScroll">
       <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <!-- @guest
+          @if (Route::has('login'))
+            @auth
+            <li class="nav-item"><a class="nav-link active" href="{{ url('/home') }}">Home</a></li>
+            @endauth
+          @endif
+        @endguest -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           Product
@@ -108,7 +115,7 @@
               <h5>Products</h5>
               <ul>
                 <li><a href="/contact">お問い合わせ</a></li>
-                <li><a href="#">利用規約</a></li>
+                <li><a href="/usage">利用規約</a></li>
                 <li><a href="#">プライバシーポリシー</a></li>
                 <li><a href="#">特定商取引法に基づく表記</a></li>
               </ul>
@@ -117,6 +124,7 @@
               <h5>Documents</h5>
               <ul>
                 <li><a href="#">当サイトについて</a></li>
+                <li><a href="#">ご利用方法</a></li>
                 <li><a href="#">Twitter</a></li>
                 <li><a href="#">Instagram</a></li>
               </ul>

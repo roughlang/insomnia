@@ -24,6 +24,7 @@ class User extends Authenticatable
         'status',
         'email_token',
         'email_token_limit_at',
+        'member_class',
     ];
 
     /**

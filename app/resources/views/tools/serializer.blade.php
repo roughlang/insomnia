@@ -21,9 +21,7 @@
           jsonフォーマットをシリアライズします。またシリアライズされた文字列をjsonに戻します。
         </p>
         <div id="app" class="app">
-          <textarea class="form-text" name="text" v-model="text">
-
-          </textarea>
+          <textarea class="form-text" name="text" v-model="text"></textarea>
           <button @click="run()" type="button" class="mt10 btn-sm btn btn-secondary">Go</button>
           <pre class="view mt30"><code>@{{ res }}</code></pre>
         </div>
